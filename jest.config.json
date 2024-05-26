@@ -1,0 +1,14 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "jsdom",
+  "setupFilesAfterEnv": ["./setupTests.ts"],
+  "moduleNameMapper": {
+    "^@src/(.*)$": "./src/$1",
+    "^@assets/(.*)$": "./src/assets/$1",
+    "^@adapters/(.*)$": "./src/adapters/$1",
+    "^@application/(.*)$": "./src/application/$1",
+    "^@domain/(.*)$": "./src/domain/$1",
+    "^@presentation/(.*)$": "./src/presentation/$1",
+    "^@components/(.*)$": "./src/presentation/components/$1"
+  }
+}
