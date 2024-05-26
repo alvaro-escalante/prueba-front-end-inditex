@@ -20,7 +20,7 @@ Incluye configuraciones para desarrollo y producción, gestionando transpilació
 
 ### Aliases
 
-Los paths están configurados en `tsconfig.json` y sincronizados con Webpack para facilitar los imports, utilizando alias como `@src`, `@interfaces`, entre otros.
+Los paths están configurados en `tsconfig.json` y sincronizados con Webpack para facilitar los imports, utilizando alias como `@src`, `@componentes`, entre otros.
 
 ## ESLint y Prettier
 
