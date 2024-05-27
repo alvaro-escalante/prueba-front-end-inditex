@@ -48,11 +48,6 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
 /* Grouping content
    ========================================================================== */
 
@@ -223,6 +218,7 @@ button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
+  appearance: button;
   -webkit-appearance: button;
 }
 
@@ -323,6 +319,7 @@ textarea {
  */
 
 [type='search'] {
+  appearance: textfield;
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -394,59 +391,14 @@ html {
 
 /* *, *:before, *:after, :not(input[type='checkbox']) { box-sizing: inherit } */
 
-body,
-div,
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-menu,
-nav,
-section,
-main,
-form,
-legend,
-fieldset,
-label,
-ul,
-ol,
-li,
-dl,
-dt,
-dd,
-p,
-span,
-a,
-blockquote,
-table,
-tr,
-th,
-td,
-thead,
-tbody,
-tfoot,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button,
-input,
-address {
-  padding: 0px;
-  margin: 0px;
+body {
   border: 0;
-  background: none;
-  font-style: normal;
-  font-weight: normal;
-  outline: 0;
+  margin: 0;
+  padding: 0;
 }
 
 button {
+  appearance: none;
   -webkit-appearance: none;
 }
 
@@ -494,5 +446,6 @@ input::-webkit-inner-spin-button {
 
 /* For Firefox */
 input[type='number'] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }

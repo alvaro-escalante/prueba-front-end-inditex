@@ -1,4 +1,4 @@
-// Configuracion comun para desarrollo y produccion
+// Configuración común para desarrollo y producción
 import { resolve } from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import EslintPlugin from 'eslint-webpack-plugin';

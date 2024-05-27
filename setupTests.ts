@@ -1,8 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import userEvent from '@testing-library/user-event';
 import { server } from './mocks/server';
-// Hacer userEvent global para que se pueda usar en todos los test
-global.userEvent = userEvent;
 
 // Establish API mocking before all tests.
 beforeAll(() => server.listen());

@@ -33,14 +33,65 @@ Preparado para integrar MSW para simular la API durante el desarrollo y testing,
 ## Uso
 
 - Para iniciar el servidor de desarrollo: `yarn start`
-- Para construir la versión de producción: `yarn run build`
+- Para construir la versión de producción: `yarn build`
+- Para ejecutar las pruebas: `yarn test`
+- Para ejecutar las pruebas en modo watch: `yarn test:watch`
+- Para analizar el código con ESLint: `yarn lint`
+- Para analizar y corregir automáticamente el código con ESLint: `yarn lint:fix`
+- Para formatear el código con Prettier: `yarn format`
+
+### Scripts Disponibles
+
+- `start`: Inicia el servidor de desarrollo con Webpack.
+  ```bash
+  yarn start
+  ```
+
+- `build`: Construye la versión de producción usando Webpack.
+  ```bash
+  yarn build
+  ```
+
+- `test`: Ejecuta las pruebas con Jest.
+  ```bash
+  yarn test
+  ```
+
+- `test:watch`: Ejecuta las pruebas con Jest en modo watch.
+  ```bash
+  yarn test:watch
+  ```
+
+- `lint`: Analiza el código con ESLint.
+  ```bash
+  yarn lint
+  ```
+
+- `lint:fix`: Analiza y corrige automáticamente el código con ESLint.
+  ```bash
+  yarn lint:fix
+  ```
+
+- `format`: Formatea el código con Prettier.
+  ```bash
+  yarn format
+  ```
+
+### Husky
+
+Este proyecto utiliza [Husky](https://github.com/typicode/husky) para gestionar hooks de Git. Actualmente, está configurado para ejecutar análisis de código y pruebas antes de cada commit:
+
+```json
+"husky": {
+  "hooks": {
+    "pre-commit": "yarn lint && yarn test"
+  }
+}
+```
 
 ## Tests
 
 Configurado con Jest y MSW para realizar pruebas unitarias y de integración.
 
-### Configuración
-
-Se incluyen ejemplos de configuración de ESLint en `.eslintrc.json` y de MSW para ser utilizados tanto en desarrollo como en pruebas.
 
 
