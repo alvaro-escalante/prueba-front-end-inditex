@@ -21,6 +21,7 @@ export const getCachedPodcasts = () => {
 // Obtiene los podcasts del almacenamiento localStorage
 export const setCachedPodcasts = (podcasts: Podcast[]) => {
   const now = new Date().getTime();
+  console.log('Setting cached podcasts:', podcasts);
   localStorage.setItem(CACHE_KEY, JSON.stringify(podcasts));
   localStorage.setItem(CACHE_EXPIRY, (now + CACHE_DURATION).toString());
 };

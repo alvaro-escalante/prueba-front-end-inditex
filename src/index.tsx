@@ -2,7 +2,7 @@
 import App from '@src/presentation/App';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-// Reset global
+//  Estilo global y reset
 import './index.css';
 const container = document.getElementById('root') as HTMLElement;
 

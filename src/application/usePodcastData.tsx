@@ -16,7 +16,7 @@ export const usePodcastData = () => {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError('Unknown error');
+        setError('Error desconocido');
       }
     } finally {
       setLoading(false);

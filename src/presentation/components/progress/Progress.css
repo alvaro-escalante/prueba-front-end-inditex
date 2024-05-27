@@ -1,0 +1,23 @@
+@keyframes SpinAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spiner {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  top: 0.2rem;
+  left: 0;
+  z-index: 10000;
+}
+
+.spiner__inner {
+  transition: transform 1s ease;
+  position: absolute;
+  animation: SpinAnimation 2s linear infinite;
+}

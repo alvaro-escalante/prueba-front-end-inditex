@@ -1,15 +1,21 @@
-import { useNavigate, Outlet } from 'react-router-dom';
+import Progress from '@components/progress/Progress';
+import {
+  LoadingProvider,
+  useLoading,
+} from '@presentation/context/LoadingContext';
+import { Link, Outlet } from 'react-router-dom';
 import './Layout.css';
 
-export default function Layout() {
-  const navigate = useNavigate();
+const LayoutContent = () => {
+  const { loading } = useLoading();
 
   return (
     <div className="container">
       <header>
-        <button onClick={() => navigate('/')} className="title-button">
+        <Link to="/">
           <h1>Podcaster</h1>
-        </button>
+        </Link>
+        <Progress isLoading={loading} />
       </header>
       <main>
         <Outlet />
@@ -18,5 +24,13 @@ export default function Layout() {
         <p>&copy; 2024 Alvaro prueba front end</p>
       </footer>
     </div>
+  );
+};
+
+export default function Layout() {
+  return (
+    <LoadingProvider>
+      <LayoutContent />
+    </LoadingProvider>
   );
 }

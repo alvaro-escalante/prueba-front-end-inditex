@@ -1,7 +1,7 @@
+import { getCachedPodcasts, setCachedPodcasts } from '@adapters/cacheStorage';
 import { fetchPodcasts } from '@adapters/podcastsRequest';
 import type { Podcast, ApiPodcast } from '@src/types/podcasts';
 
-import { getCachedPodcasts, setCachedPodcasts } from './podcastCache';
 import processPodcasts from './podcastProcess';
 
 // Optener los podcasts, cachearlos y procesarlos

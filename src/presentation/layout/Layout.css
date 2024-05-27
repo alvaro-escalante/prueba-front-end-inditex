@@ -8,7 +8,8 @@
 
 header {
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #ccc;
 }
 
@@ -30,7 +31,6 @@ h1 {
   color: var(--text-accent);
   font-family: 'Inter', sans-serif;
   font-weight: 700;
-  margin-bottom: 0.5rem;
   font-size: 1.4rem;
 }
 
