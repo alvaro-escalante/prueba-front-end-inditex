@@ -1,10 +1,18 @@
 import { fetchPodcasts } from '@adapters/podcastsRequest';
 import type { Podcast, ApiPodcast } from '@src/types/podcasts';
 
+import { getCachedPodcasts, setCachedPodcasts } from './podcastCache';
 import processPodcasts from './podcastProcess';
 
-// Función encargada de obtener los podcasts y procesarlo
-export default async function GetPodcasts(): Promise<Podcast[]> {
+// Optener los podcasts, cachearlos y procesarlos
+export async function getPodcasts(): Promise<Podcast[]> {
+  const cachedPodcasts = getCachedPodcasts();
+  if (cachedPodcasts) {
+    return cachedPodcasts;
+  }
+
   const rawPodcasts: ApiPodcast[] = await fetchPodcasts();
-  return processPodcasts(rawPodcasts);
+  const processedPodcasts = processPodcasts(rawPodcasts);
+  setCachedPodcasts(processedPodcasts);
+  return processedPodcasts;
 }

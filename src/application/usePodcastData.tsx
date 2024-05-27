@@ -1,4 +1,4 @@
-import GetPodcasts from '@domain/podcastService';
+import { getPodcasts } from '@domain/podcastService';
 import type { Podcast } from '@src/types/podcasts';
 import { useEffect, useState } from 'react';
 
@@ -10,7 +10,7 @@ export const usePodcastData = () => {
 
   const fetcher = async () => {
     try {
-      const podcasts = await GetPodcasts();
+      const podcasts = await getPodcasts();
       setData(podcasts);
     } catch (err) {
       if (err instanceof Error) {
