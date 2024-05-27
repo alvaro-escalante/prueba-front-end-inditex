@@ -1,27 +1,29 @@
-import type { Podcast } from '@src/types/podcasts';
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // Default duration of 24 hours
 
-// Constantes para el almacenamiento local
-const CACHE_KEY = 'podcastData';
-const CACHE_EXPIRY = 'podcastDataExpiry';
-const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 horas
-
-// Guarda los podcasts en el almacenamiento localStorage
-export const getCachedPodcasts = () => {
-  const cachedData = localStorage.getItem(CACHE_KEY);
-  const cachedDate = localStorage.getItem(CACHE_EXPIRY);
+// Funcion resuable para obtener datos de LocalStorage
+export const getCachedData = <T>(
+  cacheKey: string,
+  expiryKey: string,
+): T | null => {
+  const cachedData = localStorage.getItem(cacheKey);
+  const cachedExpiry = localStorage.getItem(expiryKey);
   const now = new Date().getTime();
 
-  if (cachedData && cachedDate && now < parseInt(cachedDate)) {
-    return JSON.parse(cachedData) as Podcast[];
+  if (cachedData && cachedExpiry && now < parseInt(cachedExpiry)) {
+    return JSON.parse(cachedData) as T;
   }
 
   return null;
 };
 
-// Obtiene los podcasts del almacenamiento localStorage
-export const setCachedPodcasts = (podcasts: Podcast[]) => {
+// Funcion resuable para establecer datos del LocalStorage
+export const setCachedData = <T>(
+  cacheKey: string,
+  expiryKey: string,
+  data: T,
+  duration: number = CACHE_DURATION,
+): void => {
   const now = new Date().getTime();
-  console.log('Setting cached podcasts:', podcasts);
-  localStorage.setItem(CACHE_KEY, JSON.stringify(podcasts));
-  localStorage.setItem(CACHE_EXPIRY, (now + CACHE_DURATION).toString());
+  localStorage.setItem(cacheKey, JSON.stringify(data));
+  localStorage.setItem(expiryKey, (now + duration).toString());
 };

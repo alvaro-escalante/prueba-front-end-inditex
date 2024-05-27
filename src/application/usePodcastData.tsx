@@ -1,4 +1,4 @@
-import { getPodcasts } from '@domain/podcastService';
+import { getPodcasts } from '@src/domain/podcastTopService';
 import type { Podcast } from '@src/types/podcasts';
 import { useEffect, useState } from 'react';
 

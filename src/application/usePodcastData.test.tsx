@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { usePodcastData } from './usePodcastData';
-import { getPodcasts } from '@domain/podcastService';
+import { getPodcasts } from '@src/domain/podcastTopService';
 
 jest.mock('@domain/podcastService');
 
