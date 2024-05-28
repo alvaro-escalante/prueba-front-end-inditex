@@ -19,7 +19,6 @@ export const useEpisodeDetails = (
       try {
         const podcastDetails = await getPodcastDetails(podcastId);
 
-        console.log(podcastDetails);
         setPodcast(podcastDetails);
 
         if (!initialEpisode) {

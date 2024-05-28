@@ -1,7 +1,7 @@
 import { getCachedData, setCachedData } from '@adapters/cacheStorage';
 import { fetchTopPodcasts } from '@src/adapters/topRequest';
 import processPodcasts from '@src/domain/topProcess';
-import type { Podcast, ApiPodcast } from '@src/types/podcasts';
+import type { Podcast, ApiPodcast } from '@src/types/podcastsTops';
 
 const PODCASTS_KEY = 'podcastData';
 const PODCASTS_EXPIRY_KEY = 'podcastDataExpiry';

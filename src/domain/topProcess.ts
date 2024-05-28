@@ -1,5 +1,6 @@
-import type { Podcast, ApiPodcast } from '@src/types/podcasts';
+import type { Podcast, ApiPodcast } from '@src/types/podcastsTops';
 
+// Procesar los podcasts para obtener los datos necesarios
 export default function ProcessPodcasts(podcasts: ApiPodcast[]): Podcast[] {
   return podcasts.map((podcast) => ({
     id: podcast.id.attributes['im:id'],

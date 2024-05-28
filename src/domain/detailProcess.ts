@@ -4,7 +4,7 @@ import type {
   ApiPodcastDetail,
 } from '@src/types/podcastDetail';
 
-// Función que procesa los detalles de un podcast
+// Procesar los detalles de un podcast pare detalles y episodios
 export default function processPodcastDetail(
   data: ApiPodcastDetail[],
   summary: string,

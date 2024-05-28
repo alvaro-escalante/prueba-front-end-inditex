@@ -1,16 +1,22 @@
-# Webpack React con TypeScript
+# Prueba Inditex - Webpack React con TypeScript
 
 Esta configuracion de Webpack está creada para facilitar el desarrollo y la construcción de aplicaciones React utilizando TypeScript. Incluye configuraciones para ESLint, Prettier, y MSW (Mock Service Worker).
 
-## Estructura del Proyecto
+## Estructura Hexagonal del Proyecto
 
-La estructura básica del proyecto incluye:
+La estructura siguiendo el modelo de Arquitecture Hexagonal (Adaptes & Ports) del proyecto incluye:
 
 - `src/`: código fuente de la aplicación.
   - `adaters/`: Aquí se ubican los adaptadores que actúan como una capa intermedia entre la lógica de negocio y las interfaces externas, tales como API, bases de datos o servicios externos. Estos adaptadores son responsables de transformar los datos entrantes y salientes para que sean compatibles con el dominio de la aplicación.
   - `application/`: Contiene hooks y otros componentes que actúan como puertos, facilitando la comunicación entre la presentación y la lógica de negocio.
   - `domain/`: Contiene la lógica de negocio central de la aplicación, incluyendo modelos y servicios de dominio.
   - `presentation/`: Contiene los componentes de la interfaz de usuario (UI), responsables de la representación visual y la interacción del usuario.
+    - `Context`: Utilizado para informar globalmente del estado de carga de los podcast, detalles y episodios
+    - `Components`: Carpeta de componentes regulares de react
+    - `Layout`: Estilo layout wrapper para toda la aplication
+    - `Pages`: Diferentes vistas de acuerdo con las requeridas
+  - `types`: Tipos para TypeScript 
+  - `utils`: Archivo de funciones utilitarias para conversion de fechas y strings
 - `public/`: archivos estáticos e `index.html`.
 - `webpack/`: configuraciones de Webpack para desarrollo y producción.
 

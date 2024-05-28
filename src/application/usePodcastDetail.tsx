@@ -1,4 +1,4 @@
-import { getPodcastDetails } from '@src/domain/detailService';
+import { getPodcastDetails } from '@domain/detailService';
 import type { PodcastDetail } from '@src/types/podcastDetail';
 import { useEffect, useState } from 'react';
 

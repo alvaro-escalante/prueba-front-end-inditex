@@ -1,8 +1,8 @@
-import { getPodcasts } from '@src/domain/topService';
-import type { Podcast } from '@src/types/podcasts';
+import { getPodcasts } from '@domain/topService';
+import type { Podcast } from '@src/types/podcastsTops';
 import { useEffect, useState } from 'react';
 
-// Custom hook encargado de obtener los datos de los podcasts solo
+// Custom hook encargado de obtener los datos de los podcasts populares
 export const usePodcastData = () => {
   const [data, setData] = useState<Podcast[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

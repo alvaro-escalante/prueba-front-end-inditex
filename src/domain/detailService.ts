@@ -7,7 +7,7 @@ import type { PodcastDetail, ApiPodcastDetail } from '@src/types/podcastDetail';
 const PODCAST_KEY = 'podcastDetailData_';
 const PODCAST_EXPIRY_KEY = 'podcastDetailDataExpiry';
 
-// Fetch and cache podcast details, supplementing with summary from top podcasts
+// Entregar los detalles podcast y almacenarlos en LocalStorage
 export async function getPodcastDetails(id: string): Promise<PodcastDetail> {
   const cacheKey = `${PODCAST_KEY}${id}`;
   const cacheExpiryKey = `${PODCAST_EXPIRY_KEY}${id}`;
@@ -20,12 +20,12 @@ export async function getPodcastDetails(id: string): Promise<PodcastDetail> {
     return cachedPodcastDetails;
   }
 
-  // Fetch top podcasts to get summary
+  // Añadir summary al podcast para el sidebar
   const topPodcasts = await getPodcasts();
   const topPodcast = topPodcasts.find((podcast) => podcast.id === id);
   const summary = topPodcast?.summary || '';
 
-  // Fetch podcast details
+  // Fetch detalles del podcast
   const rawPodcastDetails: ApiPodcastDetail[] = await fetchPodcastDetails(id);
   const processedPodcastDetails = processPodcastDetail(
     rawPodcastDetails,
