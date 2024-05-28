@@ -3,6 +3,7 @@ import { usePodcastData } from '@src/application/usePodcastTop';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
+
 export default function MainView() {
   const [search, setSearch] = useState('');
   const { setLoading } = useLoading();

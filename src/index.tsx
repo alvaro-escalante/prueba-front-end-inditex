@@ -7,7 +7,7 @@ import './index.css';
 const container = document.getElementById('root') as HTMLElement;
 
 if (!container) {
-  throw new Error('Container root no encontrado');
+  throw new Error('Contenedor root no encontrado');
 }
 createRoot(container).render(
   <React.StrictMode>

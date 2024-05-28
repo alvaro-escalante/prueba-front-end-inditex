@@ -23,7 +23,9 @@ export default function processPodcastDetail(
     id: episode.trackId.toString(),
     title: episode.trackName,
     publicationDate: episode.releaseDate,
+    description: episode.description,
     duration: episode.trackTimeMillis,
+    audioUrl: episode.episodeUrl,
   }));
 
   // Retorna data para sidebar y episodios

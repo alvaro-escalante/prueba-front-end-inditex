@@ -2,7 +2,6 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-
   row-gap: 40px;
   column-gap: 16px;
   justify-items: center;
@@ -23,7 +22,6 @@
   background-color: #fff;
   margin-top: 100px;
   box-shadow: var(--box-shadow);
-
   width: 100%;
   display: flex;
   flex-direction: column;

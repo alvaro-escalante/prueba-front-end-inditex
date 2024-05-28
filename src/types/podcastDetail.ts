@@ -2,7 +2,9 @@ export type Episode = {
   id: string;
   title: string;
   publicationDate: string;
+  description: string;
   duration: number;
+  audioUrl: string;
 };
 
 export type PodcastDetail = {
@@ -22,9 +24,10 @@ export type ApiPodcastDetail = {
   artistName: string;
   shortDescription?: string;
   longDescription?: string;
-  description?: string;
+  description: string;
   trackId: number;
   trackName: string;
   releaseDate: string;
   trackTimeMillis: number;
+  episodeUrl: string;
 };

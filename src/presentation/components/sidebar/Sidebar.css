@@ -1,13 +1,22 @@
 aside {
   box-shadow: var(--box-shadow);
   text-align: left;
-  width: 200px;
+  max-width: 250px;
   height: 100%;
+}
+
+.sidebar a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
 }
 
 .sidebar__img {
   display: block;
-  width: calc(100% - 4.5rem);
+  width: calc(100% - 6rem);
   height: auto;
   margin: 1em auto;
   border-radius: 4px;
