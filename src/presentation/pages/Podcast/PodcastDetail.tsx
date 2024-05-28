@@ -1,4 +1,4 @@
-import { usePodcastData } from '@application/usePodcastData';
+import { usePodcastDetail } from '@application/usePodcastDetail';
 import Sidebar from '@components/Sidebar/Sidebar';
 import { useLoading } from '@presentation/context/LoadingContext';
 import { useEffect } from 'react';
@@ -6,8 +6,11 @@ import { useParams } from 'react-router-dom';
 import './PodcastDetail.css';
 
 export default function DetallePodcast() {
+  // Optener ID del podcast de los parámetros de la URL
   const { podcastId } = useParams<{ podcastId: string }>();
-  const { data: podcasts, loading, error } = usePodcastData();
+  // Obtener el podcast y el estado de carga del hook
+  const { data: podcast, loading, error } = usePodcastDetail(podcastId!);
+  // Obtener la función setLoading del loading context provider
   const { setLoading } = useLoading();
 
   // Actualizar el estado de loading del hook al context
@@ -19,10 +22,12 @@ export default function DetallePodcast() {
     return <div>Error: {error}</div>;
   }
 
-  const podcast = podcasts.find((entry) => entry.id === podcastId);
+  if (loading) {
+    return <div>Cargando...</div>;
+  }
 
   if (!podcast) {
-    return <div>Podcast not found</div>;
+    return <div>Podcast no encontrado</div>;
   }
 
   return (

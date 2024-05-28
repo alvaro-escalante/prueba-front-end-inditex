@@ -1,10 +1,10 @@
-import { fetchPodcasts } from './podcastsRequest';
+import { fetchTopPodcasts } from './topRequest';
 import { http, HttpResponse } from 'msw';
 import { server } from '../../mocks/server';
 
 describe('fetchPodcasts', () => {
   it('should fetch and return the top podcasts', async () => {
-    const podcasts = await fetchPodcasts();
+    const podcasts = await fetchTopPodcasts();
     expect(podcasts).toEqual([
       {
         id: { attributes: { 'im:id': '123' } },
@@ -23,7 +23,7 @@ describe('fetchPodcasts', () => {
       }),
     );
 
-    await expect(fetchPodcasts()).rejects.toThrow(
+    await expect(fetchTopPodcasts()).rejects.toThrow(
       'Network response was not ok',
     );
   });
@@ -38,7 +38,7 @@ describe('fetchPodcasts', () => {
       }),
     );
 
-    await expect(fetchPodcasts()).rejects.toThrow(
+    await expect(fetchTopPodcasts()).rejects.toThrow(
       'Network response was not ok',
     );
   });

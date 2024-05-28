@@ -1,17 +1,17 @@
-import { getPodcasts } from '@src/domain/podcastTopService';
-import type { Podcast } from '@src/types/podcasts';
+import { getPodcastDetails } from '@src/domain/detailService';
+import type { PodcastDetail } from '@src/types/podcastDetail';
 import { useEffect, useState } from 'react';
 
-// Custom hook encargado de obtener los datos de los podcasts solo
-export const usePodcastData = () => {
-  const [data, setData] = useState<Podcast[]>([]);
+// Custom hook encargado de obtener los datos de los detalles del podcast
+export const usePodcastDetail = (id: string) => {
+  const [data, setData] = useState<PodcastDetail | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const fetcher = async () => {
     try {
-      const podcasts = await getPodcasts();
-      setData(podcasts);
+      const podcastDetails = await getPodcastDetails(id);
+      setData(podcastDetails);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -25,7 +25,7 @@ export const usePodcastData = () => {
 
   useEffect(() => {
     fetcher();
-  }, []);
+  }, [id]);
 
   return { data, loading, error };
 };

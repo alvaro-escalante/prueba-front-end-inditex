@@ -1,5 +1,5 @@
-import { usePodcastData } from '@application/usePodcastData';
 import { useLoading } from '@presentation/context/LoadingContext';
+import { usePodcastData } from '@src/application/usePodcastTop';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
