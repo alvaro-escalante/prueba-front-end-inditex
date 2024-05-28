@@ -22,7 +22,7 @@
 .podcast-list__item {
   background-color: #fff;
   margin-top: 100px;
-  box-shadow: 0 2px 3px rgba(128, 128, 128, 0.3);
+  box-shadow: var(--box-shadow);
 
   width: 100%;
   display: flex;

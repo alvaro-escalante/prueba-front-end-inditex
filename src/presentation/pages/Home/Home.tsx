@@ -2,7 +2,7 @@ import { usePodcastData } from '@application/usePodcastData';
 import { useLoading } from '@presentation/context/LoadingContext';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Principal.css';
+import './Home.css';
 export default function MainView() {
   const [search, setSearch] = useState('');
   const { setLoading } = useLoading();

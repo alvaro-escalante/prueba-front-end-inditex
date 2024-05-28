@@ -1,6 +1,6 @@
 const CACHE_DURATION = 24 * 60 * 60 * 1000; // Default duration of 24 hours
 
-// Funcion resuable para obtener datos de LocalStorage
+// Funcion retulizable para obtener datos de LocalStorage
 export const getCachedData = <T>(
   cacheKey: string,
   expiryKey: string,
@@ -16,7 +16,7 @@ export const getCachedData = <T>(
   return null;
 };
 
-// Funcion resuable para establecer datos del LocalStorage
+// Funcion retulizable para establecer datos del LocalStorage
 export const setCachedData = <T>(
   cacheKey: string,
   expiryKey: string,

@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Layout from './layout/Layout';
-import DetalleEpisodio from './pages/DetalleEpisodio';
-import DetallesPodcast from './pages/DetallePodcast';
-import Principal from './pages/home/Principal';
+import EpisodeDetail from './pages/Episode/EpisodeDetail';
+import Home from './pages/Home/Home';
+import PodcastDetail from './pages/Podcast/PodcastDetail';
 
 const router = createBrowserRouter([
   {
@@ -12,15 +12,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Principal />,
+        element: <Home />,
       },
       {
         path: 'podcast/:podcastId',
-        element: <DetallesPodcast />,
+        element: <PodcastDetail />,
       },
       {
         path: 'podcast/:podcastId/episode/:episodeId',
-        element: <DetalleEpisodio />,
+        element: <EpisodeDetail />,
       },
     ],
   },

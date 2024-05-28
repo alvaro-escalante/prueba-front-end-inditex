@@ -1,8 +1,8 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { usePodcastData } from './usePodcastData';
-import { getPodcasts } from '@src/domain/podcastTopService';
+import { getPodcasts } from '@domain/podcastTopService';
 
-jest.mock('@domain/podcastService');
+jest.mock('@domain/podcastTopService');
 
 describe('usePodcastData', () => {
   it('fetches podcasts on mount', async () => {
@@ -26,7 +26,7 @@ describe('usePodcastData', () => {
     expect(result.current.error).toBe(null);
   });
 
-  it('sets error state when fetch fails', async () => {
+  it('Error state when fetch fails', async () => {
     const mockError = new Error('Failed to fetch podcasts');
 
     (getPodcasts as jest.Mock).mockRejectedValue(mockError);

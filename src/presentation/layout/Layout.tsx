@@ -1,8 +1,8 @@
-import Progress from '@components/progress/Progress';
 import {
   LoadingProvider,
   useLoading,
 } from '@presentation/context/LoadingContext';
+import Progress from '@src/presentation/components/Progress/Progress';
 import { Link, Outlet } from 'react-router-dom';
 import './Layout.css';
 
