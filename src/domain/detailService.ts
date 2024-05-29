@@ -1,11 +1,11 @@
 import { getCachedData, setCachedData } from '@adapters/cacheStorage';
-import { fetchPodcastDetails } from '@src/adapters/detailRequest';
-import processPodcastDetail from '@src/domain/detailProcess';
-import { getPodcasts } from '@src/domain/topService';
+import { fetchPodcastDetails } from '@adapters/detailRequest';
+import processPodcastDetail from '@domain/detailProcess';
+import { getPodcasts } from '@domain/topService';
 import type { PodcastDetail, ApiPodcastDetail } from '@src/types/podcastDetail';
 
 const PODCAST_KEY = 'podcastDetailData_';
-const PODCAST_EXPIRY_KEY = 'podcastDetailDataExpiry';
+const PODCAST_EXPIRY_KEY = 'podcastDetailDataExpiry_';
 
 // Entregar los detalles podcast y almacenarlos en LocalStorage
 export async function getPodcastDetails(id: string): Promise<PodcastDetail> {

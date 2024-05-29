@@ -11,6 +11,7 @@ export const usePodcastDetail = (id: string) => {
   const fetcher = async () => {
     try {
       const podcastDetails = await getPodcastDetails(id);
+
       setData(podcastDetails);
     } catch (err) {
       if (err instanceof Error) {

@@ -1,4 +1,4 @@
-const CACHE_DURATION = 24 * 60 * 60 * 1000; // Default duration of 24 hours
+export const CACHE_DURATION = 24 * 60 * 60 * 1000; // Default duration of 24 hours
 
 // Funcion retulizable para obtener datos de LocalStorage
 export const getCachedData = <T>(

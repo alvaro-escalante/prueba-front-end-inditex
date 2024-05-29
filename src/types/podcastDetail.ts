@@ -1,3 +1,19 @@
+export type ApiPodcastDetail = {
+  wrapperType: string;
+  collectionId: number;
+  collectionName: string;
+  artworkUrl100: string;
+  artistName: string;
+  shortDescription?: string;
+  longDescription?: string;
+  description: string;
+  trackId: number;
+  trackName: string;
+  releaseDate: string;
+  trackTimeMillis: number;
+  episodeUrl: string;
+};
+
 export type Episode = {
   id: string;
   title: string;
@@ -14,20 +30,4 @@ export type PodcastDetail = {
   author: string;
   summary: string;
   episodes: Episode[];
-};
-
-export type ApiPodcastDetail = {
-  wrapperType: string;
-  collectionId: number;
-  collectionName: string;
-  artworkUrl100: string;
-  artistName: string;
-  shortDescription?: string;
-  longDescription?: string;
-  description: string;
-  trackId: number;
-  trackName: string;
-  releaseDate: string;
-  trackTimeMillis: number;
-  episodeUrl: string;
 };

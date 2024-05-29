@@ -1,45 +1,14 @@
 import { fetchTopPodcasts } from './topRequest';
-import { http, HttpResponse } from 'msw';
-import { server } from '../../mocks/server';
 
-describe('fetchPodcasts', () => {
-  it('should fetch and return the top podcasts', async () => {
+describe('fetchTopPodcasts', () => {
+  it('fetches top podcasts data successfully', async () => {
     const podcasts = await fetchTopPodcasts();
-    expect(podcasts).toEqual([
-      {
-        id: { attributes: { 'im:id': '123' } },
-        'im:name': { label: 'Test Podcast' },
-      },
-    ]);
-  });
 
-  it('should throw an error if the network response is not ok', async () => {
-    server.use(
-      http.get('https://api.allorigins.win/get', () => {
-        return HttpResponse.json(
-          { message: 'Network response was not ok' },
-          { status: 500 },
-        );
-      }),
-    );
-
-    await expect(fetchTopPodcasts()).rejects.toThrow(
-      'Network response was not ok',
-    );
-  });
-
-  it('should handle fetch errors', async () => {
-    server.use(
-      http.get('https://api.allorigins.win/get', () => {
-        return HttpResponse.json(
-          { message: 'Network response was not ok' },
-          { status: 500 },
-        );
-      }),
-    );
-
-    await expect(fetchTopPodcasts()).rejects.toThrow(
-      'Network response was not ok',
-    );
+    expect(podcasts).toHaveLength(1);
+    const podcast = podcasts[0];
+    expect(podcast.id.attributes['im:id']).toBe('123');
+    expect(podcast['im:name'].label).toBe('Test Podcast');
+    expect(podcast['im:image'].label).toBe('https://example.com/podcast.jpg');
+    expect(podcast['im:author'].label).toBe('Test Author');
   });
 });

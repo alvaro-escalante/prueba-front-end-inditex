@@ -3,6 +3,8 @@
   "testEnvironment": "<rootDir>/jsdom-extended.ts",
   "setupFilesAfterEnv": ["<rootDir>/setupTests.ts"],
   "moduleNameMapper": {
+    "^mocks/(.*)$": "<rootDir>/mocks/$1",
+    "\\.(css|less|scss|sass)$": "jest-transform-css",
     "^@src/(.*)$": "<rootDir>/src/$1",
     "^@assets/(.*)$": "<rootDir>/src/assets/$1",
     "^@adapters/(.*)$": "<rootDir>/src/adapters/$1",

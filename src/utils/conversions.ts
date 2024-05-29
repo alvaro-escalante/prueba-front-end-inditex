@@ -1,16 +1,23 @@
 // Convertir una fecha en formato ISO a una fecha en formato DD/MM/YYYY
 export function formatDateString(dateTimeString: string): string {
-  // Extraer la parte de la fecha
-  const datePart = dateTimeString.split('T')[0];
+  const date = new Date(dateTimeString);
 
-  // Remplazar los guiones por barras
-  const formattedDate = datePart.replace(/-/g, '/');
+  if (isNaN(date.getTime())) {
+    return '';
+  }
 
-  return formattedDate;
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+
+  return `${day}/${month}/${year}`;
 }
 
 // Convertir milisegundos a una cadena de tiempo en formato HH:MM:SS
 export function secondsToTimeString(milliseconds: number): string {
+  if (isNaN(milliseconds)) {
+    return '';
+  }
   const totalSeconds = Math.floor(milliseconds / 1000);
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -28,7 +35,7 @@ export function secondsToTimeString(milliseconds: number): string {
   }
 }
 
-// Convertir una cadena de texto a HTML
+// Convertir una cadena de texto con saltos de línea a un HTML con párrafos
 export function formatDesc(description?: string): string {
   // Sino hay descripción retornar un string vacío
   if (!description) {

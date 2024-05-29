@@ -1,8 +1,8 @@
-import { renderHook, waitFor } from '@testing-library/react';
-import { useEpisodeDetails } from './usePodcastEpisode';
-
 import { getPodcastDetails } from '@domain/detailService';
 import { PodcastDetail, Episode } from '@src/types/podcastDetail';
+import { renderHook, waitFor } from '@testing-library/react';
+
+import { useEpisodeDetails } from './usePodcastEpisode';
 
 // Mock la función getPodcastDetails
 jest.mock('@domain/detailService', () => ({

@@ -1,12 +1,12 @@
 import { usePodcastDetail } from '@application/usePodcastDetail';
 import Sidebar from '@components/Sidebar/Sidebar';
 import { useLoading } from '@presentation/context/LoadingContext';
-import { formatDateString, secondsToTimeString } from '@src/utils/convertions';
+import { formatDateString, secondsToTimeString } from '@src/utils/conversions';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './Detail.css';
 
-export default function DetallePodcast() {
+export default function Detail() {
   // Optener ID del podcast de los parámetros de la URL
   const { podcastId } = useParams<{ podcastId: string }>();
   // Obtener el podcast y el estado de carga del hook

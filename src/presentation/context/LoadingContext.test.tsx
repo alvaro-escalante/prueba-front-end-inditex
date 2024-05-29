@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
 import { renderHook, act } from '@testing-library/react';
+import { ReactNode } from 'react';
+
 import { LoadingProvider, useLoading } from './LoadingContext';
 
 describe('Loading Context Provider', () => {

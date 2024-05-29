@@ -1,6 +1,6 @@
 import { useEpisodeDetails } from '@application/usePodcastEpisode';
 import Sidebar from '@components/Sidebar/Sidebar';
-import { formatDesc } from '@src/utils/convertions';
+import { formatDesc } from '@src/utils/conversions';
 import { useParams, useLocation } from 'react-router-dom';
 import './Episode.css';
 
@@ -38,7 +38,7 @@ export default function DetalleEpisodio() {
           className="episode-detail__description"
           dangerouslySetInnerHTML={{ __html: formatDesc(episode.description) }}
         />
-        <audio controls>
+        <audio controls data-testid="audio-element">
           <source src={episode.audioUrl} type="audio/mpeg" />
           <track kind="captions" label="No captions available" />
           Your browser does not support the audio element.

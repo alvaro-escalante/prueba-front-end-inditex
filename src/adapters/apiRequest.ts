@@ -5,6 +5,7 @@ export async function fetchFromApi<T>(url: string): Promise<T> {
     if (!response.ok) {
       throw new Error('Problema en la respuesta de la red');
     }
+
     return await response.json();
   } catch (error) {
     console.error('Fetch error:', error);

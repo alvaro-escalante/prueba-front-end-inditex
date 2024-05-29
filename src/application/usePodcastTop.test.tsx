@@ -1,8 +1,8 @@
-import { renderHook, waitFor } from '@testing-library/react';
-import { usePodcastData } from './usePodcastTop';
-
 import { getPodcasts } from '@domain/topService';
 import { Podcast } from '@src/types/podcastsTops';
+import { renderHook, waitFor } from '@testing-library/react';
+
+import { usePodcastData } from './usePodcastTop';
 
 // Mock de la función getPodcasts
 jest.mock('@domain/topService', () => ({

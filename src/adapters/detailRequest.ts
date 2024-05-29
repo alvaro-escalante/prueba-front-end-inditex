@@ -4,11 +4,13 @@ import { fetchFromApi } from './apiRequest';
 export async function fetchPodcastDetails(id: string) {
   const ENDPOINT = `https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=20`;
 
-  const PROXI_ENDPOINT = `https://api.allorigins.win/get?url=${encodeURIComponent(
+  const PROXY_ENDPOINT = `https://api.allorigins.win/get?url=${encodeURIComponent(
     ENDPOINT,
   )}`;
 
-  const { contents } = await fetchFromApi<{ contents: string }>(PROXI_ENDPOINT);
+  console.log('Fetching URL:', PROXY_ENDPOINT); // Log the URL being fetched
+
+  const { contents } = await fetchFromApi<{ contents: string }>(PROXY_ENDPOINT);
   const podcastDetails = JSON.parse(contents).results;
   return podcastDetails;
 }
