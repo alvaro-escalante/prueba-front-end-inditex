@@ -1,12 +1,14 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from '@presentation/pages/Home/Home';
-import Layout from '@src/presentation/layout/Layout';
 import { usePodcastData } from '@application/usePodcastTop';
-import userEvent from '@testing-library/user-event';
+import Layout from '@presentation/layout/Layout';
+import Home from '@presentation/pages/Home/Home';
+import { render, screen, waitFor } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Mock de usePodcastData
-jest.mock('@application/usePodcastTop');
+jest.mock('@application/usePodcastTop', () => ({
+  usePodcastData: jest.fn(),
+}));
 
 // Utilidad para renderizar Home con Layout
 const renderHome = () => {
@@ -22,6 +24,11 @@ const renderHome = () => {
 };
 
 describe('Renderiza correctamente con y sin data', () => {
+  // Reset the mock before each test
+  beforeEach(() => {
+    (usePodcastData as jest.Mock).mockReset();
+  });
+
   it('Muestra loading correctamente antes de obtener los datos', () => {
     const usePodcastDataMock = jest.fn().mockReturnValue({
       data: null,
@@ -73,7 +80,7 @@ describe('Renderiza correctamente con y sin data', () => {
 });
 
 describe('Filtrado podcasts', () => {
-  // Set up the common mock data for the tests
+  // Aplicar el mock de usePodcastData
   const usePodcastDataMock = jest.fn().mockReturnValue({
     data: [
       {
@@ -94,19 +101,19 @@ describe('Filtrado podcasts', () => {
   });
 
   beforeEach(() => {
-    // Apply the mock before each test
+    // Aplicar el mock de usePodcastData
     (usePodcastData as jest.Mock) = usePodcastDataMock;
     renderHome();
   });
 
   it('Filtra podcasts correctamente por titulo', async () => {
-    // Simulate typing in the filter input for title
+    // Simular escribir en el input de filtro el titulo
     userEvent.type(
       screen.getByPlaceholderText('Filter podcast...'),
       'Test Podcast 1',
     );
 
-    // Wait for the correct podcast to render and verify
+    // Esperar a que se renderice el podcast correcto y verificar
     await waitFor(() => {
       expect(screen.getByText('Test Podcast 1')).toBeInTheDocument();
       expect(screen.queryByText('Test Podcast 2')).not.toBeInTheDocument();
@@ -114,13 +121,13 @@ describe('Filtrado podcasts', () => {
   });
 
   it('Filtra podcasts correctamente por autor', async () => {
-    // Simulate typing in the filter input for author
+    // Simular escribir en el input de filtro el autor
     userEvent.type(
       screen.getByPlaceholderText('Filter podcast...'),
       'Author 1',
     );
 
-    // Wait for the correct podcast to render based on author and verify
+    // Esperar a que se renderice el podcast correcto y verificar
     await waitFor(() => {
       expect(screen.getByText('Author: Author 1')).toBeInTheDocument();
       expect(screen.queryByText('Author: Author 2')).not.toBeInTheDocument();
