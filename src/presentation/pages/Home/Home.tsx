@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
-export default function MainView() {
+export default function Home() {
   const [search, setSearch] = useState('');
   const { setLoading } = useLoading();
   const { data, loading, error } = usePodcastData();
@@ -19,7 +19,7 @@ export default function MainView() {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Error</div>;
   }
 
   // Filtraje de podcasts por titulo o autor
