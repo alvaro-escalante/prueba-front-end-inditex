@@ -2,6 +2,7 @@ import { getPodcastDetails } from '@domain/detailService';
 import type { PodcastDetail, Episode } from '@src/types/podcastDetail';
 import { useState, useEffect } from 'react';
 
+// Custon hook encargado de obtener los detalles de un episodio
 export const useEpisodeDetails = (
   podcastId: string,
   episodeId: string,

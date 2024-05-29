@@ -1,46 +1,50 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@testing-library/react';
 import { usePodcastData } from './usePodcastTop';
-import { getPodcasts } from '@src/domain/topService';
 
-jest.mock('@domain/podcastTopService');
+import { getPodcasts } from '@domain/topService';
+import { Podcast } from '@src/types/podcastsTops';
+
+// Mock de la función getPodcasts
+jest.mock('@domain/topService', () => ({
+  getPodcasts: jest.fn(),
+}));
 
 describe('usePodcastData', () => {
-  it('fetches podcasts on mount', async () => {
-    const mockPodcasts = [
-      { id: '1', name: 'Podcast 1', url: 'http://example.com/1' },
-      { id: '2', name: 'Podcast 2', url: 'http://example.com/2' },
+  it('fetches podcast data successfully', async () => {
+    const mockPodcasts: Podcast[] = [
+      {
+        id: '123',
+        title: 'Test Podcast',
+        image: 'https://example.com/podcast.jpg',
+        author: 'Test Author',
+        summary: 'Test Summary',
+      },
     ];
 
     (getPodcasts as jest.Mock).mockResolvedValue(mockPodcasts);
 
-    const { result, waitForNextUpdate } = renderHook(() => usePodcastData());
+    const { result } = renderHook(() => usePodcastData());
 
     expect(result.current.loading).toBe(true);
 
-    await act(async () => {
-      await waitForNextUpdate();
-    });
+    await waitFor(() => expect(result.current.loading).toBe(false));
 
-    expect(result.current.loading).toBe(false);
     expect(result.current.data).toEqual(mockPodcasts);
-    expect(result.current.error).toBe(null);
+    expect(result.current.error).toBeNull();
   });
 
-  it('Error state when fetch fails', async () => {
-    const mockError = new Error('Failed to fetch podcasts');
+  it('handles error correctly', async () => {
+    const errorMessage = 'Failed to fetch';
 
-    (getPodcasts as jest.Mock).mockRejectedValue(mockError);
+    (getPodcasts as jest.Mock).mockRejectedValue(new Error(errorMessage));
 
-    const { result, waitForNextUpdate } = renderHook(() => usePodcastData());
+    const { result } = renderHook(() => usePodcastData());
 
     expect(result.current.loading).toBe(true);
 
-    await act(async () => {
-      await waitForNextUpdate();
-    });
+    await waitFor(() => expect(result.current.loading).toBe(false));
 
-    expect(result.current.loading).toBe(false);
     expect(result.current.data).toEqual([]);
-    expect(result.current.error).toBe('Failed to fetch podcasts');
+    expect(result.current.error).toBe(errorMessage);
   });
 });
