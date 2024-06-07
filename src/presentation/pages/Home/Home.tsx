@@ -29,7 +29,7 @@ export default function Home() {
     ),
   );
 
-  return data ? (
+  return (
     <div className="podcast-main-view">
       <div className="podcast-controls">
         <span className="podcast-num">{filteredPodcasts.length}</span>
@@ -61,5 +61,5 @@ export default function Home() {
         ))}
       </ul>
     </div>
-  ) : null;
+  );
 }

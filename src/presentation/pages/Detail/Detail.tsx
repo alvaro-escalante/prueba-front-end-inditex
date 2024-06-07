@@ -1,6 +1,6 @@
 import { usePodcastDetail } from '@application/usePodcastDetail';
-import Sidebar from '@components/Sidebar/Sidebar';
 import { useLoading } from '@presentation/context/LoadingContext';
+import Sidebar from '@src/presentation/components/Sidebar/Sidebar';
 import { formatDateString, secondsToTimeString } from '@src/utils/conversions';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';

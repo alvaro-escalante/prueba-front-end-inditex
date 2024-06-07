@@ -1,5 +1,5 @@
 import { useEpisodeDetails } from '@application/usePodcastEpisode';
-import Sidebar from '@components/Sidebar/Sidebar';
+import Sidebar from '@src/presentation/components/Sidebar/Sidebar';
 import { formatDesc } from '@src/utils/conversions';
 import { useParams, useLocation } from 'react-router-dom';
 import './Episode.css';
